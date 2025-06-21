@@ -10,4 +10,6 @@ public interface OrdersService {
     List<OrdersRequestDto> findAllOrders();
 
     OrdersRequestDto findOrderById(Long orderId);
+
+    OrdersRequestDto createNewOrder(OrdersRequestDto ordersRequestDto);
 }

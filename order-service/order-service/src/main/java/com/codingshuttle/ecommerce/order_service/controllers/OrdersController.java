@@ -3,11 +3,9 @@ package com.codingshuttle.ecommerce.order_service.controllers;
 import com.codingshuttle.ecommerce.order_service.dto.OrdersRequestDto;
 import com.codingshuttle.ecommerce.order_service.services.OrdersService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,5 +31,11 @@ public class OrdersController {
     @GetMapping(path = "/helloOrders")
     public ResponseEntity<String> helloOrders(){
         return ResponseEntity.ok("Hello from Orders Service");
+    }
+
+    @PostMapping(path = "/create-order")
+    public ResponseEntity<OrdersRequestDto> createNewOrder(@RequestBody OrdersRequestDto ordersRequestDto){
+        OrdersRequestDto ordersRequestDto1 = ordersService.createNewOrder(ordersRequestDto);
+        return new ResponseEntity<>(ordersRequestDto1,HttpStatus.CREATED);
     }
 }
