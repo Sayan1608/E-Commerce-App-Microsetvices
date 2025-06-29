@@ -67,4 +67,20 @@ public class ProductServiceImpl implements ProductService {
         return totalPrice;
 
     }
+
+    @Override
+    public Double addStock(OrdersRequestDto ordersRequestDto) {
+        List<OrderRequestItemDto> orderItems = ordersRequestDto.getOrderItems();
+        double totalPrice=0.0;
+        for(OrderRequestItemDto item : orderItems){
+            Long productId = item.getProductId();
+            Integer quantity = item.getQuantity();
+            Product product = productRepository.findById(productId).orElseThrow(() ->
+                    new RuntimeException("Product not found with id: " + productId));
+            product.setStock(product.getStock() + quantity);
+            productRepository.save(product);
+            totalPrice+=quantity*product.getPrice();
+        }
+        return totalPrice;
+    }
 }

@@ -52,4 +52,11 @@ public class ProductController {
         Double totalPrice = productService.reduceStock(ordersRequestDto);
         return ResponseEntity.ok(totalPrice);
     }
+
+    @PutMapping(path = "/add-stock")
+    public ResponseEntity<Double> addStock(@RequestBody OrdersRequestDto ordersRequestDto){
+        Double totalPrice = productService.addStock(ordersRequestDto);
+       return ResponseEntity.ok(totalPrice);
+    }
+
 }

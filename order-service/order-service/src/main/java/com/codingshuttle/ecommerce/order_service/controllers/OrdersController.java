@@ -38,4 +38,10 @@ public class OrdersController {
         OrdersRequestDto ordersRequestDto1 = ordersService.createNewOrder(ordersRequestDto);
         return new ResponseEntity<>(ordersRequestDto1,HttpStatus.CREATED);
     }
+
+    @PutMapping(path = "/cancel-order/{orderId}")
+    public ResponseEntity<OrdersRequestDto> cancelOrder(@PathVariable(name = "orderId") Long id){
+        OrdersRequestDto ordersRequestDto=ordersService.cancelOrder(id);
+        return ResponseEntity.ok(ordersRequestDto);
+    }
 }

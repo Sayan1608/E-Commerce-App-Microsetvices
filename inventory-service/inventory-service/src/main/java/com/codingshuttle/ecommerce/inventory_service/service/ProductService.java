@@ -10,4 +10,6 @@ public interface ProductService {
     ProductDto getProductById(Long productId);
 
     Double reduceStock(OrdersRequestDto ordersRequestDto);
+
+    Double addStock(OrdersRequestDto ordersRequestDto);
 }

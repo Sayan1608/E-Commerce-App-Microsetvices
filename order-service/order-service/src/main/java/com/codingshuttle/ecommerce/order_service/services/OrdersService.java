@@ -12,4 +12,6 @@ public interface OrdersService {
     OrdersRequestDto findOrderById(Long orderId);
 
     OrdersRequestDto createNewOrder(OrdersRequestDto ordersRequestDto);
+
+    OrdersRequestDto cancelOrder(Long id);
 }
